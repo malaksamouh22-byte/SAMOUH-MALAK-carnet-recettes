@@ -1,45 +1,107 @@
-# Swift Development Course Template
+# 🍳 Carnet de Recettes
 
-Welcome, Students!
+##  Description
 
-This repository is your starting point for the Swift / iOS Development course. It is pre-configured to run a full Swift environment in the cloud (GitHub Codespaces), allowing you to build Swift applications—including UI apps—without needing a Mac.
+**Carnet de Recettes** est une application web développée en Swift avec le framework Hummingbird.
+Elle permet aux utilisateurs d’ajouter, consulter, supprimer et marquer comme favoris leurs recettes de cuisine.
 
-## 🚀 Quick Start
+L’application utilise une base de données SQLite pour stocker les recettes de manière persistante.
 
-Do not clone this directly. Follow these steps to set up your personal workspace:
+---
 
-#### 1. Create your Repo:
-1. Click the green "Use this template" button at the top right of this page.
-2. Select "Create a new repository".
-3. Name it according to the assignment instructions (e.g., assignment-1-yourname).
+## ⚙️ Fonctionnalités
 
-#### 2. Launch the Environment:
-Once your new repository is created:
-1. click the green <> Code button.
-2. Switch to the Codespaces tab.
-3. Click "Create codespace on main".
+*  Ajouter une recette
+*  Afficher la liste des recettes
+*  Marquer une recette comme favorite
+*  Supprimer une recette
+*  Rechercher et filtrer les recettes (nom, catégorie, favoris)
+*  Interface moderne et responsive
 
-Wait about 2-3 minutes. GitHub is building a Linux container with Swift 6.2 and all necessary VS Code extensions pre-installed for you.
+---
 
-## 🛠 What's Included?
-- **Swift 6 Toolchain:** The latest stable version of the swift language and build tools.
+##  Structure du projet
 
-## 💻 How to Run Your Code
+* `main.swift` → Configuration du serveur et des routes
+* `Database.swift` → Gestion de la base de données SQLite
+* `Models.swift` → Définition des modèles (Recipe)
+* `Views.swift` → Génération de l’interface HTML
 
-#### Running Logic & Console Apps
+---
 
-For pure logic libraries or backend tasks:
+##  Routes exposées
+
+| Méthode | Route           | Description                                         |
+| ------- | --------------- | --------------------------------------------------- |
+| GET     | `/`             | Affiche la page principale avec toutes les recettes |
+| POST    | `/create`       | Ajoute une nouvelle recette                         |
+| POST    | `/delete/:id`   | Supprime une recette                                |
+| POST    | `/favorite/:id` | Active/désactive le statut favori                   |
+
+---
+
+##  Lancer l’application
+
+### 1. Installer les dépendances
+
+```bash
+swift package resolve
+```
+
+### 2. Compiler le projet
+
+```bash
+swift build
+```
+
+### 3. Lancer le serveur
+
+```bash
+swift run App
+```
+
+---
+
+## 🌍 Accès à l’application
+
+Une fois lancée, l’application est accessible via :
 
 ```
-# Run the main executable
-swift run
-
-# Run unit tests
-swift test
+http://localhost:8080
 ```
 
-## 📂 Project Structure
-Sources/: Your Swift source code lives here.
-Tests/: Unit tests go here.
-Package.swift: The dependency manager file. Do not modify this unless instructed to add a new library.
+ou via l’URL fournie par GitHub Codespaces.
 
+---
+
+##  Utilisation
+
+1. Remplir le formulaire pour ajouter une recette
+2. Cliquer sur "Ajouter"
+3. Consulter la liste des recettes
+4. Utiliser les boutons pour :
+
+   * supprimer une recette
+   * marquer comme favorite
+5. Utiliser les filtres pour rechercher
+
+---
+
+##  Technologies utilisées
+
+* Swift
+* Hummingbird (framework web)
+* SQLite
+* HTML / CSS / JavaScript
+
+---
+
+##  Auteur
+
+Projet réalisé par **Malak Samouh** dans le cadre du cours de développement Swift.
+
+---
+
+## 📄 Licence
+
+Ce projet est fourni à des fins éducatives.
