@@ -1,33 +1,26 @@
-// swift-tools-version:6.2
+// swift-tools-version: 6.2
 import PackageDescription
 
 let package = Package(
     name: "SwiftApp",
-    platforms: [.macOS(.v13)],
+    platforms: [
+        .macOS(.v13)
+    ],
     products: [
-        .executable(name: "App", targets: ["App"]),
+        .executable(name: "App", targets: ["App"])
     ],
     dependencies: [
-      // Add package dependencies and pin versions here
+        .package(url: "https://github.com/hummingbird-project/hummingbird.git", from: "2.0.0"),
+        .package(url: "https://github.com/stephencelis/SQLite.swift.git", from: "0.15.3"),
     ],
     targets: [
-        // Add additional local modules here
-        // Example "Shared" is a local module you created
-        // .target(name: "Shared"),
-
         .executableTarget(
             name: "App",
             dependencies: [
-                // Add build targe dependencies here
-                // example:
-                // .product(name: "Vapor", package: "vapor"),
-                
-                // Also we add local modules
-                // "Shared"
+                .product(name: "Hummingbird", package: "hummingbird"),
+                .product(name: "SQLite", package: "SQLite.swift"),
             ],
-            resources: [
-                .copy("Resources")
-            ]
-        ),
+            path: "Sources/App"
+        )
     ]
 )
